@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de produtos</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Produtos!</h1>
+    <hr>
+    <h3>Iniciando os estudos com Node.js e Express.</h3>
+    <p>Essa página está sendo renderizada com EJS no Express.</p>
+
+    <% let encontrado = false %>
+    <% if (!produto) { %>
+
+        <p>Esses são os produtos disponiveis no momento:</p>
+        <% produtos.forEach(produtos => { %> 
+            Nome: <%= produtos.nome%> <br>
+            Preco: <%= produtos.preco%> <br>
+            Descricao: <%= produtos.descricao%> <br> <br>
+    <%  
+        })
+
+    }
+    
+    else {
+
+        produtos.forEach(produtos => {
+
+            if (produto == produtos.nome) { 
+                encontrado = true
+    %>
+                <p>Esse é o produto que buscava:</p>
+                Nome: <%= produtos.nome%> <br>
+                Preco: <%= produtos.preco%> <br>
+                Descricao: <%= produtos.descricao%> <br> <br>
+    <% 
+            }
+
+        }) 
+    %>
+
+        <p>
+        <% if(!encontrado){ %>
+            Produto não encontrado.
+        <% } %>
+        </p>
+
+    <% } %> 
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de pedidos</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Pedidos!</h1>
+    <hr>
+    <h3>Iniciando os estudos com Node.js e Express.</h3>
+    <p>Essa página está sendo renderizada com EJS no Express.</p>
+    <p><%# Comentario%></p>
+    <p><%#= pedidos %></p>
+    <% pedidos.forEach(pedido => { %>
+        Produto: <%= pedido.produto %> <br>
+        Preço: <%= pedido.preco %> <br><br>
+    <% }) %> 
+</body>
+</html>
