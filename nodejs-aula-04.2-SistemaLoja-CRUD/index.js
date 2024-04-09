@@ -11,6 +11,7 @@ import mongoose from "mongoose"
 import PedidosController from "./controllers/PedidosController.js"
 import ProdutosController from "./controllers/ProdutosController.js"
 import ClientesController from "./controllers/ClientesController.js"
+import UsersController from "./controllers/UsersController.js"
 
 //Permite receber os dados vindo de formulários e arquivos json
 app.use(express.urlencoded({extended: false}))
@@ -29,6 +30,7 @@ app.use(express.static('public'))
 app.use("/", PedidosController)
 app.use("/", ProdutosController)
 app.use("/", ClientesController)
+app.use("/", UsersController)
 
 // ROTA PRINCIPAL
 app.get("/",function(req,res){

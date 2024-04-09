@@ -28,6 +28,24 @@ class ClienteService {
             console.log(erro)
         })
     }
+
+    //Método para SELECIONAR um cliente ÚNICO
+    selectOne(id){
+        const cliente = Cliente.findOne({_id: id})
+        return cliente
+    }
+
+    Update(id, nome, cpf, endereco){
+        Cliente.findByIdAndUpdate(id, {
+            nome: nome,
+            cpf: cpf,
+            endereco: endereco
+        }).then(()=>{
+            console.log(`Dados do cliente com o id: ${id} alterados com sucesso!`)
+        }).catch(erro => {
+            console.log(erro)
+        })
+    }
 }
 
 export default new ClienteService()

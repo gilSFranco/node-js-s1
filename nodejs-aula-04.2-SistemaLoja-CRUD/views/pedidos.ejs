@@ -46,7 +46,7 @@
                             <td><img src="imgs/order.png" width="30px"></td>
                             <td><%= pedido.numero %></td>
                             <td><%= pedido.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
-                            <td><a href="/pedidos/update/<%= pedido._id %>" class="btn btn-primary">Editar</a></td>
+                            <td><a href="/pedidos/update/<%= pedido._id %>" class="btn btn-warning text-white">Editar</a></td>
                             <td><a href="/pedidos/delete/<%= pedido._id %>" class="btn btn-danger">Excluir</a></td>
                         </tr>
                         <% }) %>
