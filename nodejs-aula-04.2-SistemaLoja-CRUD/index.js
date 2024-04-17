@@ -7,6 +7,21 @@ const app = express()
 //Importando a ODM Mongoose
 import mongoose from "mongoose"
 
+//Importando o Express-Session (gerador de sessões)
+import session from "express-session"
+
+//Importando o middleware
+import Auth from "./middleware/Auth.js"
+
+//Configurando o express-session
+app.use(session({
+    secret: "lojasecret",
+    //Sessão expira em n segundos (3600000 = 1 hora)
+    cookie: { maxAge: 3600000 },
+    saveUninitialized: false,
+    resave: false
+}))
+
 //Importando os Controllers (onde estão as rotas)
 import PedidosController from "./controllers/PedidosController.js"
 import ProdutosController from "./controllers/ProdutosController.js"
@@ -33,12 +48,12 @@ app.use("/", ClientesController)
 app.use("/", UsersController)
 
 // ROTA PRINCIPAL
-app.get("/",function(req,res){
+app.get("/", Auth, (req,res) => {
     res.render("index")
 })
 
 // INICIA O SERVIDOR NA PORTA 8080
-app.listen(8080,function(erro){
+app.listen(8080, erro => {
     if(erro) {
         console.log("Ocorreu um erro!")
 

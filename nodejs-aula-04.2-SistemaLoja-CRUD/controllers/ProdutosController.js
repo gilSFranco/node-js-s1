@@ -1,8 +1,9 @@
 import express from "express"
 const router = express.Router()
 import ProdutoService from "../services/ProdutoService.js"
+import Auth from "../middleware/Auth.js"
 
-router.get("/produtos", (req,res) => {
+router.get("/produtos", Auth, (req,res) => {
     ProdutoService.selectAll().then(produtos => {
         res.render("produtos", {
             produtos: produtos
@@ -10,7 +11,7 @@ router.get("/produtos", (req,res) => {
     })
 })
 
-router.post("/produtos/new", (req, res) => {
+router.post("/produtos/new", Auth, (req, res) => {
     ProdutoService.Create(
         req.body.nome,
         req.body.preco,

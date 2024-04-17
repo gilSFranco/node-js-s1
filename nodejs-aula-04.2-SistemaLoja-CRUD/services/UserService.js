@@ -12,6 +12,11 @@ class UserService {
 
         newUser.save()
     }
+
+    SelectOne(email){
+        const user = User.findOne({email: email})
+        return user
+    }
 }
 
 export default new UserService()
