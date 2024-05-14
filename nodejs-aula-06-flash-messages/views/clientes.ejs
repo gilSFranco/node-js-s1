@@ -1,0 +1,70 @@
+<%- include ('partials/header.ejs') %>
+    <%- include ('partials/navbar.ejs') %>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Cadastrar Cliente</h1>
+                </div>
+                <div class="card-body">
+                    <form action="/clientes/new" method="post">
+                        <label for="nome">Nome do Cliente:</label>
+                        <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente" class="form-control" required>
+
+                        <label for="cpf">Cpf:</label>
+                        <input type="text" name="cpf" id="cpf" placeholder="Insira o cpf do cliente" class="form-control" required>
+
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" name="endereco" id="endereco" placeholder="Insira o endereco do cliente" class="form-control" required>
+
+                        <br>
+
+                        <button class="btn btn-success">Cadastrar</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Clientes</h1>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome:</th>
+                                <th>CPF:</th>
+                                <th>Endereço:</th>
+                                <th style="text-align: center;" colspan="2">Ações:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% clientes.forEach(cliente=> { %>
+                                <tr>
+                                    <td><img src="imgs/avatar.png" width="30px"></td>
+                                    <td>
+                                        <%= cliente.nome %>
+                                    </td>
+                                    <td>
+                                        <%= cliente.cpf %>
+                                    </td>
+                                    <td>
+                                        <%= cliente.endereco %>
+                                    </td>
+                                    <td><a href="/clientes/edit/<%= cliente._id %>" class="btn btn-warning text-white">Editar</a></td>
+                                    <td><a href="/clientes/delete/<%= cliente._id %>" class="btn btn-danger" onclick="return confirm('Confirma a exclusão do registro? ')">Excluir</a></td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+<%- include ('partials/footer.ejs') %>
